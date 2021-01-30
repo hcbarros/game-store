@@ -5,28 +5,36 @@ import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Product {
 
    @Id
    @GeneratedValue
-   public Long id;
+   private Long id;
 
-   public String name;
+   private String name;
 
-   public BigDecimal price;
+   private BigDecimal price;
 
-   public short score;
+   private Integer score;
 
-   public String image;
-   
-   
+   private String image;
+
+   @ManyToMany
+   @JoinTable(name = "product_cart",
+   joinColumns = @JoinColumn(name = "product_id"),
+   inverseJoinColumns = @JoinColumn(name = "cart_id"))
+   private Cart cart;
+      
    public Product() {
 	   
    }
    
-   public Product(String name, BigDecimal price, short score, String image) {
+   public Product(String name, BigDecimal price, Integer score, String image) {
 		super();
 		this.name = name;
 		this.price = price;
@@ -59,11 +67,11 @@ public class Product {
 		this.price = price;
 	}
 	
-	public short getScore() {
+	public Integer getScore() {
 		return score;
 	}
 	
-	public void setScore(short score) {
+	public void setScore(Integer score) {
 		this.score = score;
 	}
 	
@@ -73,6 +81,14 @@ public class Product {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+	
+	public Cart getCart() {
+		return cart;
+	}
+	
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 
 }
