@@ -1,29 +1,33 @@
 package br.com.supera.game.store.config;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import br.com.supera.game.store.repository.CartRepository;
 import br.com.supera.game.store.model.Cart;
 import br.com.supera.game.store.model.Product;
 
+
+@Configuration
+@Profile("prod")
 public class DataLoader {
 	
 	@Autowired
 	private CartRepository cartRepository;
-
+	
+	
 	@Bean
 	CommandLineRunner baseLoad() {
 		 
 		return args -> {
-			
-			List<Product> list = new ArrayList<>();
-			
+						
 			Product p1 = new Product(
 					"Super Mario Odyssey", 
 					new BigDecimal("197.88"), 
@@ -78,14 +82,13 @@ public class DataLoader {
 					290, 
 					"horizon-zero-dawn.png"
 			);
-						
-			list.add(p1); list.add(p2); list.add(p3); list.add(p4); list.add(p5); 
-			list.add(p6); list.add(p7); list.add(p8); list.add(p9); 
-
-			Cart cart = new Cart(new BigDecimal("0"));
-			cart.setProducts(list);
+								
 			
-			cartRepository.save(cart);			
+			Cart cart = new Cart();
+			
+			cart.setProducts(List.of(p1,p2,p3,p4,p5,p6,p7,p8,p9));
+			
+			cartRepository.save(cart);					
 		};
 	}
 

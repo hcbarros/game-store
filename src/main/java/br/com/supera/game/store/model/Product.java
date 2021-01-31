@@ -2,14 +2,19 @@ package br.com.supera.game.store.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "product")
 public class Product {
 
    @Id
@@ -24,12 +29,7 @@ public class Product {
 
    private String image;
 
-   @ManyToMany
-   @JoinTable(name = "product_cart",
-   joinColumns = @JoinColumn(name = "product_id"),
-   inverseJoinColumns = @JoinColumn(name = "cart_id"))
-   private Cart cart;
-      
+  
    public Product() {
 	   
    }
@@ -81,14 +81,6 @@ public class Product {
 
 	public void setImage(String image) {
 		this.image = image;
-	}
-	
-	public Cart getCart() {
-		return cart;
-	}
-	
-	public void setCart(Cart cart) {
-		this.cart = cart;
 	}
 
 }
