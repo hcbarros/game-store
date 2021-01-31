@@ -9,12 +9,9 @@ import br.com.supera.game.store.model.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 		
-	@Query(value = "select * from product order by price", nativeQuery = true)
-	public List<Product> findAllOrderByPrice();
-
-	@Query(value = "select * from product order by score", nativeQuery = true)
-	public List<Product> findAllOrderByScore();
+	List<Product> findAllByOrderByPrice();
 	
-	@Query(value = "select * from product order by name", nativeQuery = true)
-	public List<Product> findAllOrderByName();
+	List<Product> findAllByOrderByScore();
+	
+	List<Product> findAllByOrderByName();
 }

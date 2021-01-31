@@ -82,10 +82,8 @@ public class DataLoader {
 					290, 
 					"horizon-zero-dawn.png"
 			);
-								
-			
-			Cart cart = new Cart();
-			
+					
+			Cart cart = new Cart();			
 			cart.setProducts(List.of(p1,p2,p3,p4,p5,p6,p7,p8,p9));
 			
 			cartRepository.save(cart);					

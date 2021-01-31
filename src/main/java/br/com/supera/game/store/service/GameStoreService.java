@@ -13,7 +13,7 @@ import br.com.supera.game.store.repository.CartRepository;
 import br.com.supera.game.store.repository.ProductRepository;
 
 @Service
-public class StoreGameService {
+public class GameStoreService {
 
 	@Autowired
 	private CartRepository cartRepository;
@@ -25,8 +25,8 @@ public class StoreGameService {
 	public Cart save(Product product) {
 		
 		boolean isNull = product.getId() == null;
-		if(isNull) product = productRepository.save(product);
-		else return getCart();
+		product = productRepository.save(product);
+		if(!isNull) return getCart();
 		Cart c = getCart().addProduct(product);
 		return cartRepository.save(c);
 	}
@@ -50,19 +50,19 @@ public class StoreGameService {
 			
 	public Cart getProductsByPrice() {
 		
-		List<Product> l = productRepository.findAllOrderByPrice();
+		List<Product> l = productRepository.findAllByOrderByPrice();
 		return getCart().replaceProducts(l);
 	}
 	
 	public Cart getProductsByScore() {
 		
-		List<Product> l = productRepository.findAllOrderByScore();
+		List<Product> l = productRepository.findAllByOrderByScore();
 		return getCart().replaceProducts(l);
 	}
 	
 	public Cart getProductsByName() {
 		
-		List<Product> l = productRepository.findAllOrderByName();
+		List<Product> l = productRepository.findAllByOrderByName();
 		return getCart().replaceProducts(l);
 	}	
 	

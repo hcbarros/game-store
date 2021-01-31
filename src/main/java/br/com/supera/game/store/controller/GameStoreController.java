@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.supera.game.store.model.Cart;
 import br.com.supera.game.store.model.Product;
-import br.com.supera.game.store.service.StoreGameService;
+import br.com.supera.game.store.service.GameStoreService;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,51 +32,51 @@ import org.springframework.data.domain.Pageable;
 @RestController
 @Validated
 @RequestMapping("/games")
-public class StoreGameController {
+public class GameStoreController {
 
 	@Autowired
-	private StoreGameService productService;
+	private GameStoreService GameStoreService;
 	
 	@GetMapping(value = "{id}")
 	public Product getOne(@PathVariable Long id) {
-		return productService.getProduct(id);		
+		return GameStoreService.getProduct(id);		
 	}
 	
 	@GetMapping
 	public Cart getAll() {
-		return productService.getCart();
+		return GameStoreService.getCart();
 	}
 	
 	@GetMapping(value = "/orderByPrice")
     public Cart getProductsByPrice(){		
-        return productService.getProductsByPrice();
+        return GameStoreService.getProductsByPrice();
     }
 	
 	@GetMapping(value = "/orderByScore")
     public Cart getProductsByScore(){		
-        return productService.getProductsByScore();
+        return GameStoreService.getProductsByScore();
     }
 	
 	@GetMapping(value = "/orderByName")
     public Cart getProductsByName(){		
-        return productService.getProductsByName();
+        return GameStoreService.getProductsByName();
     }
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cart save(@RequestBody @Valid Product product) {
-		return productService.save(product);
+		return GameStoreService.save(product);
 	}
 	
 	@PutMapping(value = "{id}")
 	public Cart modify(@PathVariable Long id, @RequestBody Product product) {
-		return productService.modify(id, product);
+		return GameStoreService.modify(id, product);
 	}
 	
 	@DeleteMapping(value = "{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		productService.delete(id);
+		GameStoreService.delete(id);
 	}
 	
 }
