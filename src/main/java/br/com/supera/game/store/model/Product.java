@@ -2,16 +2,12 @@ package br.com.supera.game.store.model;
 
 import java.math.BigDecimal;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
 
 @Entity
 @Table(name = "product")
@@ -21,6 +17,7 @@ public class Product {
    @GeneratedValue
    private Long id;
 
+   @NotBlank(message = "Field name is required")
    private String name;
 
    private BigDecimal price;
@@ -30,18 +27,18 @@ public class Product {
    private String image;
 
   
-   public Product() {
-	   
+   public Product() {	   
+	   this.price = BigDecimal.ZERO;
+	   this.score = 0;
    }
    
    public Product(String name, BigDecimal price, Integer score, String image) {
 		super();
 		this.name = name;
-		this.price = price;
-		this.score = score;
+		this.price = price == null ? BigDecimal.ZERO : price;
+		this.score = score == null ? 0 : score;
 		this.image = image;
    }
-   
    
    public Long getId() {
 	   return id;
