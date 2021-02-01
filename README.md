@@ -7,13 +7,13 @@ Endpoint base -> http://localhost:8080/games
 Possui os seguintes verbos:
 
 GET/  
-GET/orderByPrice
-GET/orderByScore
-GET/orderByName
-GET/{id}
-POST/
-PUT/{id}
-DELETE/{id}
+GET/orderByPrice\
+GET/orderByScore\
+GET/orderByName\
+GET/{id}\
+POST/\
+PUT/{id}\
+DELETE/{id}\
 
 Também pode ser acessada por meio da URL https://api-game-store.herokuapp.com/games/
 
