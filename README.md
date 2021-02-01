@@ -13,7 +13,7 @@ GET/orderByName\
 GET/{id}\
 POST/\
 PUT/{id}\
-DELETE/{id}\
+DELETE/{id}
 
 Também pode ser acessada por meio da URL https://api-game-store.herokuapp.com/games/
 
