@@ -1,6 +1,8 @@
 package br.com.supera.game.store.config;
 
 import java.math.BigDecimal;
+
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,7 +86,8 @@ public class DataLoader {
 			);
 					
 			Cart cart = new Cart();			
-			cart.setProducts(List.of(p1,p2,p3,p4,p5,p6,p7,p8,p9));
+			List<Product> list = Arrays.asList(p1,p2,p3,p4,p5,p6,p7,p8,p9);
+			cart.setProducts(list);
 			
 			cartRepository.save(cart);					
 		};
