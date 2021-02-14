@@ -17,8 +17,6 @@ DELETE/{id}
 
 Também pode ser acessada por meio da URL https://api-game-store.herokuapp.com/games/
 
-No Spring Boot foi utilizado o padrão MVC com as camadas do modelo, serviço, controle, com uma pequena configuração para permitir o uso da API a partir de qualquer origem. Caso haja necessidade de futuras mudanças na aplicação, o Spring Boot permite uma configuração de segurança bem robusta, com apenas alguns passos. Por isso essa biblioteca é sempre uma opção interessante. Como banco de dados, foi utilizado o H2 que fica embutido na própria aplicação.
-
 Os testes unitários foram realizados, cobrindo quase todo o código.
 
 Esse projeto pode ser facilmente executado utilizando a IDE Eclipse que se encontra no endereço https://spring.io/tools bastando clicar na opção "Maven Install" e em seguida "Spring Boot App".
