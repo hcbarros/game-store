@@ -1,6 +1,7 @@
 package br.com.supera.game.store.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -25,12 +26,12 @@ public class Cart {
 	
 	private BigDecimal total;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cart_id")
 	private List<Product> products;
 	
 	public Cart() {
-		
+		if(products == null) products = new ArrayList<>();
 	}	
 
 	public Long getId() {

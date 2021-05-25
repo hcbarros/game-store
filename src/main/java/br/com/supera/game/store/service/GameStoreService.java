@@ -23,57 +23,41 @@ public class GameStoreService {
 	private ProductRepository productRepository;
 	
 	
-	public Cart save(Product product) {
-		
-		boolean isNull = product.getId() == null;
-		product = productRepository.save(product);
-		if(!isNull) return getCart();
-		Cart c = getCart().addProduct(product);
-		return cartRepository.save(c);
+	public Cart save(Cart cart) {
+		return cartRepository.save(cart);
 	}
 	
-	public Cart modify(Long id, Product product) {
-		
-		Product p = getProduct(id);
-		p.setName(product.getName());
-		p.setPrice(product.getPrice());
-		p.setScore(product.getScore());
-		p.setImage(product.getImage());
-				
-		return save(p);
-	}	
+	public List<Cart> getAllCarts() {
+		return cartRepository.findAll();
+	}
 	
-	public Cart getCart() {
+	
+	public Cart getCart(Long cartId) {
 		return cartRepository
-				.findById(1L)
+				.findById(cartId)
 				.orElseThrow(() -> new EntityNotFoundException());
 	}
 			
-	public Cart getProductsByPrice() {
+	public Cart getProductsByPrice(Long cartId) {
 		
 		List<Product> l = productRepository.findAllByOrderByPrice();
-		return getCart().replaceProducts(l);
+		return getCart(cartId).replaceProducts(l);
 	}
 	
-	public Cart getProductsByScore() {
+	public Cart getProductsByScore(Long cartId) {
 		
 		List<Product> l = productRepository.findAllByOrderByScore();
-		return getCart().replaceProducts(l);
+		return getCart(cartId).replaceProducts(l);
 	}
 	
-	public Cart getProductsByName() {
+	public Cart getProductsByName(Long cartId) {
 		
 		List<Product> l = productRepository.findAllByOrderByName();
-		return getCart().replaceProducts(l);
+		return getCart(cartId).replaceProducts(l);
 	}	
-	
-	public Product getProduct(Long id) {
-		return productRepository
-				.findById(id)
-				.orElseThrow(() -> new EntityNotFoundException());
-	}
+
 			
-	public void delete(Long id) {
+	public void deleteProduct(Long id) {
 		productRepository.deleteById(id);
 	}
 	

@@ -1,5 +1,7 @@
 package br.com.supera.game.store.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,46 +30,42 @@ public class GameStoreController {
 	@Autowired
 	private GameStoreService service;
 	
-	@GetMapping(value = "{id}")
-	public Product getOne(@PathVariable Long id) {
-		return service.getProduct(id);		
-	}
 	
 	@GetMapping
-	public Cart getAll() {
-		return service.getCart();
+	public Cart getCart(@PathVariable Long id) {
+		return service.getCart(id);
+	}
+	
+	@GetMapping(value = "/allCarts")
+	public List<Cart> getAllCarts() {
+		return service.getAllCarts();
 	}
 	
 	@GetMapping(value = "/orderByPrice")
-    public Cart getProductsByPrice(){		
-        return service.getProductsByPrice();
+    public Cart getProductsByPrice(@PathVariable Long cartId){		
+        return service.getProductsByPrice(cartId);
     }
 	
 	@GetMapping(value = "/orderByScore")
-    public Cart getProductsByScore(){		
-        return service.getProductsByScore();
+    public Cart getProductsByScore(@PathVariable Long cartId){		
+        return service.getProductsByScore(cartId);
     }
 	
 	@GetMapping(value = "/orderByName")
-    public Cart getProductsByName(){		
-        return service.getProductsByName();
+    public Cart getProductsByName(@PathVariable Long cartId){		
+        return service.getProductsByName(cartId);
     }
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cart save(@RequestBody @Valid Product product) {
-		return service.save(product);
-	}
-	
-	@PutMapping(value = "{id}")
-	public Cart modify(@PathVariable Long id, @RequestBody Product product) {
-		return service.modify(id, product);
+	public Cart saveProducts(@RequestBody @Valid Cart cart) {
+		return service.save(cart);
 	}
 	
 	@DeleteMapping(value = "{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
-		service.delete(id);
+	public void deleteProduct(@PathVariable Long id) {
+		service.deleteProduct(id);
 	}
 	
 }
