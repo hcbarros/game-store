@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,8 @@ public class Cart {
 	
 	private BigDecimal total;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, 
+			fetch=FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "cart_id", referencedColumnName = "id")
 	private List<Product> products;
 	
