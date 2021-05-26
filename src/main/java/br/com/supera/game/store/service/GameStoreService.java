@@ -70,6 +70,10 @@ public class GameStoreService {
 		productRepository.deleteById(id);
 	}
 	
+	public void deleteProducts(List<Product> list) {
+		productRepository.deleteAll(list);
+	}
+	
 	public Integer deleteEmptyCart() {
 		return cartRepository.deleteEmptyCart();
 	}
