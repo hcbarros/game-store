@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 public class Cart {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private BigDecimal frete;
@@ -26,8 +27,8 @@ public class Cart {
 	
 	private BigDecimal total;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cart_id")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "cart_id", referencedColumnName = "id")
 	private List<Product> products;
 	
 	public Cart() {

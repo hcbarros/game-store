@@ -23,8 +23,17 @@ public class GameStoreService {
 	private ProductRepository productRepository;
 	
 	
-	public Cart save(Cart cart) {
+	public Cart saveCart(Cart cart) {
 		return cartRepository.save(cart);
+	}
+	
+	public Cart updateCart(Long id, Product p) {
+		
+		Cart c = cartRepository.findById(id)
+					.orElseThrow(() -> new EntityNotFoundException());
+		
+		c = c.addProduct(p);
+		return cartRepository.save(c);
 	}
 	
 	public List<Cart> getAllCarts() {

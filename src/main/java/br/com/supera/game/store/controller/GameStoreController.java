@@ -41,25 +41,31 @@ public class GameStoreController {
 		return service.getAllCarts();
 	}
 	
-	@GetMapping(value = "/orderByPrice")
+	@GetMapping(value = "/orderByPrice/{cartId}")
     public Cart getProductsByPrice(@PathVariable Long cartId){		
         return service.getProductsByPrice(cartId);
     }
 	
-	@GetMapping(value = "/orderByScore")
+	@GetMapping(value = "/orderByScore/{cartId}")
     public Cart getProductsByScore(@PathVariable Long cartId){		
         return service.getProductsByScore(cartId);
     }
 	
-	@GetMapping(value = "/orderByName")
+	@GetMapping(value = "/orderByName/{cartId}")
     public Cart getProductsByName(@PathVariable Long cartId){		
         return service.getProductsByName(cartId);
     }
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cart saveProducts(@RequestBody @Valid Cart cart) {
-		return service.save(cart);
+	public Cart saveCart(@RequestBody @Valid Cart cart) {
+		return service.saveCart(cart);
+	}
+	
+	@PutMapping(value = "{id}")
+	public Cart updateCart(@PathVariable Long id, 
+						   @RequestBody @Valid Product p) {
+		return service.updateCart(id, p);
 	}
 	
 	@DeleteMapping(value = "{id}")
