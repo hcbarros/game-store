@@ -12,5 +12,5 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
 	@Transactional
 	@Modifying
 	@Query("delete from cart c where c.total = 0")
-	void deleteEmptyCart();
+	Integer deleteEmptyCart();
 }

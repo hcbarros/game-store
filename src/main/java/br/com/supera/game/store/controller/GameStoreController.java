@@ -76,8 +76,8 @@ public class GameStoreController {
 	
 	@DeleteMapping
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deleteEmptyCart() {
-		service.deleteEmptyCart();
+	public Integer deleteEmptyCart() {
+		return service.deleteEmptyCart();
 	}
 	
 }
