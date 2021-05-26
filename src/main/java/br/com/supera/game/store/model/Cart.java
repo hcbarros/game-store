@@ -14,8 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "cart")
+@Entity(name = "cart")
 public class Cart {
 
 	@Id
