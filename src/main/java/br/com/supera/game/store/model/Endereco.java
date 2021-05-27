@@ -19,7 +19,7 @@ public class Endereco {
 	private Long id;
 
 	@NotNull(message = "O CEP não deve ser nulo!")
-	@Pattern(regexp = "[0-9]{5}-[0-9]{3}")
+	@Pattern(regexp = "\\d{5}-\\d{3}", message = "Formato do CEP inválido!")
 	private String cep;
 	
 	@NotNull(message = "A rua não deve ser nula!")
@@ -27,7 +27,7 @@ public class Endereco {
 	@Size(max = 120, message = "A rua deve possuir no máximo 120 caracteres!")
 	private String rua;
 	
-	@Pattern(regexp = "[0-9]{5}-[0-9]{3}", message = "Formato do CEP invalido!")
+	@Pattern(regexp = "[0-9]+", message = "O número deve conter apenas dígitos!")
 	private String numero;
 	
 	@Size(max = 50, message = "O complemento deve possuir no máximo 50 caracteres!")
