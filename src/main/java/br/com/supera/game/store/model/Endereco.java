@@ -27,7 +27,7 @@ public class Endereco {
 	@Size(max = 120, message = "A rua deve possuir no máximo 120 caracteres!")
 	private String rua;
 	
-	@Pattern(regexp = "^[0-9]$",message="Informe um numero!")
+	@Pattern(regexp = "[0-9]{5}-[0-9]{3}", message = "Formato do CEP invalido!")
 	private String numero;
 	
 	@Size(max = 50, message = "O complemento deve possuir no máximo 50 caracteres!")

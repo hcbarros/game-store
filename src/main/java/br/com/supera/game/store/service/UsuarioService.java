@@ -1,5 +1,9 @@
 package br.com.supera.game.store.service;
 
+import java.util.List;
+
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +21,7 @@ public class UsuarioService {
 		
 		boolean exists = repo.existsByCpf(u.getCpf());
 		if(exists) {
-			Usuario user = getUsuario(u.getCpf());
+			Usuario user = getUsuarioByCpf(u.getCpf());
 			user.setCart(u.getCart());
 			user.setEndereco(u.getEndereco());
 			return repo.save(user);
@@ -25,7 +29,16 @@ public class UsuarioService {
 		return repo.save(u);
 	}
 	
-	public Usuario getUsuario(String cpf) {
+	public List<Usuario> getAll() {
+		return repo.findAll();
+	}
+	
+	public Usuario getUsuarioById(Long id) {
+		return repo.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException());
+	}
+	
+	public Usuario getUsuarioByCpf(String cpf) {
 		return repo.findByCpf(cpf);
 	}
 

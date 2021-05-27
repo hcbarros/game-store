@@ -1,5 +1,7 @@
 package br.com.supera.game.store.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +33,19 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	
 	
-	@GetMapping(value = "{cpf}")
-	public Usuario getUsuario(@PathVariable String cpf) {
-		return usuarioService.getUsuario(cpf);
+	@GetMapping
+	public List<Usuario> getAll() {
+		return usuarioService.getAll();
+	}
+	
+	@GetMapping(value = "{id}")
+	public Usuario getUsuarioById(@PathVariable Long id) {
+		return usuarioService.getUsuarioById(id);
+	}
+	
+	@GetMapping(value = "/cpf/{cpf}")
+	public Usuario getUsuarioByCpf(@PathVariable String cpf) {
+		return usuarioService.getUsuarioByCpf(cpf);
 	}
 		
 	@PostMapping
