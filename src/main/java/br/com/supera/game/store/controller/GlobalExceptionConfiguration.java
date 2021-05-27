@@ -26,7 +26,7 @@ public class GlobalExceptionConfiguration extends ResponseEntityExceptionHandler
                 .map(erro -> erro.getDefaultMessage())
                 .collect(Collectors.toList());
 		
-		return ResponseEntity.badRequest().body(new ResponseError(errors));
+		return ResponseEntity.ok().body(new ResponseError(errors));
 	}
 	
 	
