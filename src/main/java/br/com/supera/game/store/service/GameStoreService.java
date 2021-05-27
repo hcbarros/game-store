@@ -36,6 +36,17 @@ public class GameStoreService {
 		return cartRepository.save(c);
 	}
 	
+	
+	public Cart replaceProducts(Long id, List<Product> list) {
+		
+		Cart c = cartRepository.findById(id)
+					.orElseThrow(() -> new EntityNotFoundException());
+		
+		c = c.replaceProducts(list);
+		return cartRepository.save(c);
+	}
+	
+	
 	public List<Cart> getAllCarts() {
 		return cartRepository.findAll();
 	}
@@ -70,9 +81,6 @@ public class GameStoreService {
 		productRepository.deleteById(id);
 	}
 	
-	public void deleteProducts(List<Product> list) {
-		productRepository.deleteAll(list);
-	}
 	
 	public Integer deleteEmptyCart() {
 		return cartRepository.deleteEmptyCart();

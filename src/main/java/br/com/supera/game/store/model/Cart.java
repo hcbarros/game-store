@@ -27,8 +27,7 @@ public class Cart {
 	
 	private BigDecimal total;
 	
-	@OneToMany(cascade = CascadeType.ALL, 
-			fetch=FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name = "cart_id", referencedColumnName = "id")
 	private List<Product> products;
 	

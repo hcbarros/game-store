@@ -68,16 +68,16 @@ public class GameStoreController {
 		return service.updateCart(id, p);
 	}
 	
+	@PutMapping(value = "/replaceProducts/{id}")	
+	public Cart replaceProducts(@PathVariable Long id, 
+					@RequestBody @Valid List<Product> list) {
+		return service.replaceProducts(id, list);
+	}
+	
 	@DeleteMapping(value = "{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteProduct(@PathVariable Long id) {
 		service.deleteProduct(id);
-	}
-	
-	@DeleteMapping(value = "/deleteProducts")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deleteProducts(@RequestBody @Valid List<Product> list) {
-		service.deleteProducts(list);
 	}
 	
 	@DeleteMapping
