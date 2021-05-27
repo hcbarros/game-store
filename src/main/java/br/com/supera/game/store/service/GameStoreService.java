@@ -85,8 +85,8 @@ public class GameStoreService {
 	}
 	
 	
-	public Integer deleteEmptyCart() {
-		return cartRepository.deleteEmptyCart();
+	public void deleteEmptyCart() {
+		cartRepository.deleteEmptyCart();
 	}
 	
 }
