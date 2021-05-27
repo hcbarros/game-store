@@ -16,7 +16,10 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 
 @Entity
@@ -27,10 +30,16 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull(message = "Digite o seu nome!")
+	@NotBlank(message = "Digite o seu nome!")
 	private String nome;
 	
+	@CPF
 	private String cpf;
 	
+	@NotNull(message = "Informe o número do cartão!")
+	@NotBlank(message = "Informe o número do cartão!")
+	@Pattern(regexp = "^[0-9]{16}$", message="O cartão deve possuir 16 digitos!")
 	private String cartao;
 	
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
