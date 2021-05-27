@@ -58,17 +58,20 @@ public class GameStoreService {
 				.orElseThrow(() -> new EntityNotFoundException());
 	}
 			
+	
 	public Cart getProductsByPrice(Long cartId) {
 		
 		List<Product> l = productRepository.findAllByOrderByPrice();
 		return getCart(cartId).replaceProducts(l);
 	}
 	
+	
 	public Cart getProductsByScore(Long cartId) {
 		
 		List<Product> l = productRepository.findAllByOrderByScore();
 		return getCart(cartId).replaceProducts(l);
 	}
+	
 	
 	public Cart getProductsByName(Long cartId) {
 		
