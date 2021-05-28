@@ -1,5 +1,7 @@
 package br.com.supera.game.store.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +15,9 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
 //	@Modifying
 //	@Query("delete from cart c where c.total = 0")
 //	void deleteEmptyCart();
+
 	
-	@Query(value = "select count(*) from cart where total = 0", nativeQuery = true)
-	long countEmpty();
+	@Query(value = "select * from cart where total = 0", nativeQuery = true)
+	List<Cart> getCartsEmpty();
+
 }

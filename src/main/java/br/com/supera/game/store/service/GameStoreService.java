@@ -51,6 +51,9 @@ public class GameStoreService {
 		return cartRepository.findAll();
 	}
 	
+	public List<Cart> getCartsEmpty() {
+		return cartRepository.getCartsEmpty();
+	}
 	
 	public Cart getCart(Long cartId) {
 		return cartRepository
@@ -84,10 +87,7 @@ public class GameStoreService {
 		 list.sort((p1, p2) -> p1.getName().compareTo(p2.getName()));
 		 return c.replaceProducts(list);
 	}	
-
-	public long countEmpty() {
-		return cartRepository.countEmpty();
-	}
+	
 	
 	public void deleteProduct(Long id) {
 		productRepository.deleteById(id);

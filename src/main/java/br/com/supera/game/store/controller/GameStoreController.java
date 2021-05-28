@@ -41,9 +41,9 @@ public class GameStoreController {
 		return service.getAllCarts();
 	}
 	
-	@GetMapping(value = "/countEmpty")
-	public long countEmpty() {
-		return service.countEmpty();
+	@GetMapping(value = "/cartsEmpty")
+	public List<Cart> getCartsEmpty() {
+		return service.getCartsEmpty();
 	}
 	
 	@GetMapping(value = "/orderByPrice/{cartId}")
