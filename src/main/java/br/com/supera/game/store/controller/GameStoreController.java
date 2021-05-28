@@ -31,7 +31,7 @@ public class GameStoreController {
 	private GameStoreService service;
 	
 	
-	@GetMapping
+	@GetMapping(value = "/{id}")
 	public Cart getCart(@PathVariable Long id) {
 		return service.getCart(id);
 	}
