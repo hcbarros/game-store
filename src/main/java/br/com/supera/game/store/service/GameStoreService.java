@@ -85,17 +85,16 @@ public class GameStoreService {
 		 return c.replaceProducts(list);
 	}	
 
-			
+	public long countEmpty() {
+		return cartRepository.countEmpty();
+	}
+	
 	public void deleteProduct(Long id) {
 		productRepository.deleteById(id);
 	}
 	
 	public void deleteProducts(List<Product> list) {
 		productRepository.deleteAll(list);
-	}
-	
-	public void deleteEmptyCart() {
-		cartRepository.deleteEmptyCart();
 	}
 	
 }

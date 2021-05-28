@@ -9,8 +9,11 @@ import br.com.supera.game.store.model.Cart;
 
 public interface CartRepository extends JpaRepository<Cart, Long> {
 	
-	@Transactional
-	@Modifying
-	@Query("delete from cart c where c.total = 0")
-	void deleteEmptyCart();
+//	@Transactional
+//	@Modifying
+//	@Query("delete from cart c where c.total = 0")
+//	void deleteEmptyCart();
+	
+	@Query(value = "select count(*) from cart where total = 0", nativeQuery = true)
+	long countEmpty();
 }

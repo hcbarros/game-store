@@ -41,6 +41,11 @@ public class GameStoreController {
 		return service.getAllCarts();
 	}
 	
+	@GetMapping(value = "/countEmpty")
+	public long countEmpty() {
+		return service.countEmpty();
+	}
+	
 	@GetMapping(value = "/orderByPrice/{cartId}")
     public Cart getProductsByPrice(@PathVariable Long cartId){		
         return service.getProductsByPrice(cartId);
@@ -84,12 +89,6 @@ public class GameStoreController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteProducts(@RequestBody @Valid List<Product> list) {
 		service.deleteProducts(list);
-	}
-	
-	@DeleteMapping
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deleteEmptyCart() {
-		service.deleteEmptyCart();
 	}
 	
 }
