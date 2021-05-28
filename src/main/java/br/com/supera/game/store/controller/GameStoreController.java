@@ -80,6 +80,12 @@ public class GameStoreController {
 		service.deleteProduct(id);
 	}
 	
+	@DeleteMapping(value = "/deleteList")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteProducts(@RequestBody @Valid List<Product> list) {
+		service.deleteProducts(list);
+	}
+	
 	@DeleteMapping
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteEmptyCart() {
