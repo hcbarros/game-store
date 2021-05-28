@@ -61,22 +61,28 @@ public class GameStoreService {
 	
 	public Cart getProductsByPrice(Long cartId) {
 		
-		List<Product> l = productRepository.findAllByOrderByPrice();
-		return getCart(cartId).replaceProducts(l);
+		 Cart c = getCart(cartId);
+		 List<Product> list = c.getProducts();
+		 list.sort((p1, p2) -> p1.getPrice().compareTo(p2.getPrice()));
+		 return c.replaceProducts(list);
 	}
 	
 	
 	public Cart getProductsByScore(Long cartId) {
 		
-		List<Product> l = productRepository.findAllByOrderByScore();
-		return getCart(cartId).replaceProducts(l);
+		 Cart c = getCart(cartId);
+		 List<Product> list = c.getProducts();
+		 list.sort((p1, p2) -> p1.getScore().compareTo(p2.getScore()));
+		 return c.replaceProducts(list);
 	}
 	
 	
 	public Cart getProductsByName(Long cartId) {
 		
-		List<Product> l = productRepository.findAllByOrderByName();
-		return getCart(cartId).replaceProducts(l);
+		 Cart c = getCart(cartId);
+		 List<Product> list = c.getProducts();
+		 list.sort((p1, p2) -> p1.getName().compareTo(p2.getName()));
+		 return c.replaceProducts(list);
 	}	
 
 			
