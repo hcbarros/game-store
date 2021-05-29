@@ -1,6 +1,6 @@
 # game-store
 
-Projeto de API criado com uso do framework Spring Boot (branch main) e o framwork ReactJs (branch main) para consumo da API e exibição dos dados.
+Projeto de API criado com uso do framework Spring Boot (branch main) e o framwork ReactJs (branch react) para consumo da API e exibição dos dados.
 
 Endpoint base -> http://localhost:8080/
 
@@ -28,7 +28,7 @@ Usando a linha de comando, é só digitar: mvn clean install
 em seguida: mvn spring-boot:run
 
 
-Para se executar o projeto em ReacJs que se encontra na brach react, deve-se digitar o comando "npm install"
+Para se executar o projeto em ReacJs que se encontra na branch react, deve-se digitar o comando "npm install"
 na raiz do projeto para instalar as dependências, e em seguida, o comando "npm start" para inicializar a aplicação.
 
 
