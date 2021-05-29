@@ -1,5 +1,6 @@
 package br.com.supera.game.store.repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,9 +16,5 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
 //	@Modifying
 //	@Query("delete from cart c where c.total = 0")
 //	void deleteEmptyCart();
-
 	
-	@Query(value = "select * from cart where total = 0", nativeQuery = true)
-	List<Cart> getCartsEmpty();
-
 }

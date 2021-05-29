@@ -1,6 +1,9 @@
 package br.com.supera.game.store.service;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -52,7 +55,9 @@ public class GameStoreService {
 	}
 	
 	public List<Cart> getCartsEmpty() {
-		return cartRepository.getCartsEmpty();
+		return getAllCarts().parallelStream()
+				.filter(x -> x.getTotal().equals(BigDecimal.ZERO))
+				.collect(Collectors.toList());
 	}
 	
 	public Cart getCart(Long cartId) {
@@ -91,10 +96,6 @@ public class GameStoreService {
 	
 	public void deleteProduct(Long id) {
 		productRepository.deleteById(id);
-	}
-	
-	public void deleteProducts(List<Product> list) {
-		productRepository.deleteAll(list);
 	}
 	
 }
