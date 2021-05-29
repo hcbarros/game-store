@@ -26,6 +26,10 @@ Esse projeto pode ser facilmente executado utilizando a IDE Eclipse que se encon
 Usando a linha de comando, é só digitar: mvn clean install
 em seguida: mvn spring-boot:run
 
+Para se executar o projeto em Reacts que se encontra na brach react, deve-se digitar o comando "npm install"
+na raiz do projeto para instalar as dependências, e em seguida, o comando "npm start" para inicializar a aplicação.
+
+
 **É importante que se utilize o java na versao 11.
 
 Os valores exibidos no checkout (frete, subtotal e total) são calculados dinamicamente
