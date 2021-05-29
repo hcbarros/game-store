@@ -6,13 +6,13 @@ Endpoint base -> http://localhost:8080/
 
 Possui os seguintes verbos:
 
-GET/games/{cardId}
-GET/games/orderByPrice/{cardId}
-GET/games/orderByScore/{cardId}
-GET/games/orderByName/{cardId}
-GET/games/cartsEmpty
-POST/usuario
-PUT/games/{cardId}
+GET/games/{cardId}\
+GET/games/orderByPrice/{cardId}\
+GET/games/orderByScore/{cardId}\
+GET/games/orderByName/{cardId}\
+GET/games/cartsEmpty\
+POST/usuario\
+PUT/games/{cardId}\
 PUT/games/replaceProducts/{cardId}\
 
 
