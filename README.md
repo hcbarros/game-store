@@ -1,6 +1,6 @@
 # game-store
 
-Projeto de API criado com uso do framework Spring Boot (branch main) e o framwork ReactJs (branch main) para consumo da AI e exibição dos dados.
+Projeto de API criado com uso do framework Spring Boot (branch main) e o framwork ReactJs (branch main) para consumo da API e exibição dos dados.
 
 Endpoint base -> http://localhost:8080/
 
