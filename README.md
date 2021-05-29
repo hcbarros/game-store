@@ -23,10 +23,12 @@ Também pode ser acessada por meio da URL:
 
 Esse projeto pode ser facilmente executado utilizando a IDE Eclipse que se encontra no endereço https://spring.io/tools bastando clicar na opção "Maven Install" e em seguida "Spring Boot App".
 
+
 Usando a linha de comando, é só digitar: mvn clean install
 em seguida: mvn spring-boot:run
 
-Para se executar o projeto em Reacts que se encontra na brach react, deve-se digitar o comando "npm install"
+
+Para se executar o projeto em ReacJs que se encontra na brach react, deve-se digitar o comando "npm install"
 na raiz do projeto para instalar as dependências, e em seguida, o comando "npm start" para inicializar a aplicação.
 
 
