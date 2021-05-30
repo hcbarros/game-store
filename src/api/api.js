@@ -65,7 +65,7 @@ export default class Api {
                   });    
       }
 
-      
+
       static async saveUser(user) {
             return await axios.post("http://api-game-store.herokuapp.com/usuario", user)
                   

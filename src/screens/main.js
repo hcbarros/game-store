@@ -23,7 +23,7 @@ export default function Main() {
     const adicionar = async (jogo) => {
 
          let temp = {name: jogo.name, price: jogo.price, 
-                     score: jogo.score, image: jogo.image}   
+                     score: jogo.score, image: jogo.image}                    
          
          const resp = await Api.updateCart(cart.cart.id, temp);
          if(typeof resp.products !== 'undefined') dispatch(setCart(resp));   
@@ -34,6 +34,7 @@ export default function Main() {
     useEffect(async () => {
 
         const list = await Api.cartsEmpty();
+
         if(typeof cart.cart.id === 'undefined') {   
             if(Array.isArray(list) && list.length > 0) {
                 dispatch(setCart(list[0]));    
