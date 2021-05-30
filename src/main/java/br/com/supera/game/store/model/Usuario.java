@@ -46,7 +46,7 @@ public class Usuario {
 	@JoinColumn(name = "endereco_id", referencedColumnName = "id")
 	private Endereco endereco;
 	
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne
 	@JoinColumn(name = "user_cart_id", referencedColumnName = "id")
 	private Cart cart;
 	
